@@ -1,8 +1,7 @@
-#include "application.h"
+#include "Application.h"
 
 int main() {
-    auto& app = application::instance();
-    (void)app;
+  Application app;
 
-    return 0;
+  app.run();
 }
