@@ -7,7 +7,7 @@ class Application {
 public:
   Application(const ApplicationInfo& info)
     : window_manager(info.window_x, info.window_y, info.fullscreen),
-      user_interface(window_manager.handle()) {}
+      user_interface(window_manager.handle(), info.font_name) {}
 
   void run();
 

@@ -1,10 +1,11 @@
 #pragma once
+#include <string>
 
 struct GLFWwindow;
 
 class UserInteface {
 public:
-  UserInteface(GLFWwindow*);
+  UserInteface(GLFWwindow*, std::string);
 
   UserInteface(const UserInteface&) = delete;
   UserInteface& operator=(const UserInteface&) = delete;
@@ -14,4 +15,7 @@ public:
   ~UserInteface();
 
   void update();
+
+private:
+  std::string font_name;
 };
