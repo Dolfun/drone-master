@@ -1,6 +1,3 @@
-add_subdirectory(glfw)
-add_subdirectory(glad)
-
 set(imgui_sources
   imgui/imgui.cpp
   imgui/imgui_demo.cpp
@@ -15,5 +12,5 @@ set(imgui_sources
 set(imgui_headers imgui imgui/backends imgui/misc/cpp)
 
 add_library(imgui ${imgui_sources})
-target_link_libraries(imgui PRIVATE glfw glad)
+target_link_libraries(imgui PUBLIC glfw glad)
 target_include_directories(imgui PUBLIC ${imgui_headers})

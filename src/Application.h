@@ -2,6 +2,7 @@
 #include "ApplicationInfo.h"
 #include "UI/WindowManager.h"
 #include "UI/UserInterface.h"
+#include "NetworkManager.h"
 
 class Application {
 public:
@@ -14,4 +15,5 @@ public:
 private:
   WindowManager window_manager;
   UserInteface user_interface;
+  NetworkManager network_manager;
 };

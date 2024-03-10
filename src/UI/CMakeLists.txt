@@ -1,5 +1,6 @@
-set(ui_sources WindowManager.cc UserInterface.cc)
-set(ui_headers WindowManager.h UserInterface.h)
+set(ui_sources WindowManager.h WindowManager.cc UserInterface.h UserInterface.cc)
 
-add_library(ui ${ui_sources} ${ui_headers})
-target_link_libraries(ui PRIVATE imgui glad glfw)
+add_library(ui ${ui_sources})
+target_link_libraries(ui PUBLIC imgui)
+target_compile_features(ui PUBLIC cxx_std_20)
+target_include_directories(ui PUBLIC .)
