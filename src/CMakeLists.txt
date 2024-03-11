@@ -1,5 +1,5 @@
 add_subdirectory(UI)
-add_subdirectory(NetworkManager)
+add_subdirectory(ConnectionManager)
 
 set(app_sources Application.h Application.cc ApplicationInfo.h ApplicationInfo.cc)
 add_library(application ${app_sources})
