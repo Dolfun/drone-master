@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include <exception>
+#include <iostream>
 
 Application::Application(const ApplicationInfo& info) : 
   window_manager(info.window_x, info.window_y, info.fullscreen),
@@ -14,7 +16,13 @@ Application::~Application() {
 
 void Application::io_context_run() {
   auto work_guard = asio::make_work_guard(io_context);
-  io_context.run();
+
+  try {
+    io_context.run();
+  } catch (const std::exception& e) {
+    std::cerr << "asio: " << e.what() << '\n';
+    std::terminate();
+  }
 }
 
 void Application::run() {
