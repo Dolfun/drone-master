@@ -2,6 +2,7 @@
 #include "ApplicationInfo.h"
 #include "UI/WindowManager.h"
 #include "UI/UserInterface.h"
+#include "websocket/Client.h"
 
 class Application {
 public:
