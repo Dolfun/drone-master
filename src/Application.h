@@ -20,6 +20,7 @@ private:
   void init_glfw();
   void init_imgui();
   void render_ui();
+  static void key_callback(GLFWwindow*, int, int, int, int);
 
   ApplicationInfo info;
   GLFWwindow* window;

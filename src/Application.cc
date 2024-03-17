@@ -8,6 +8,11 @@
 
 Application::Application(const ApplicationInfo& _info) : info(_info) {
   init_glfw();
+
+  if (!gladLoadGL()) {
+    throw std::runtime_error("Failed to initialize OpenGL context");
+  }
+
   init_imgui();
 }
 
@@ -45,9 +50,8 @@ void Application::init_glfw() {
   glfwMakeContextCurrent(window);
   glfwSwapInterval(1);
 
-  if (!gladLoadGL()) {
-    throw std::runtime_error("Failed to initialize OpenGL context");
-  }
+  glfwSetWindowUserPointer(window, static_cast<void*>(this));
+  glfwSetKeyCallback(window, key_callback);
 }
 
 void Application::init_imgui() {
@@ -63,6 +67,13 @@ void Application::init_imgui() {
   ImGui::StyleColorsDark();
   ImGui_ImplGlfw_InitForOpenGL(window, true);
   ImGui_ImplOpenGL3_Init();
+}
+
+void Application::key_callback(GLFWwindow* window, int key, int, int action, int) {
+  auto& self = *static_cast<Application*>(glfwGetWindowUserPointer(window));
+  if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+    glfwSetWindowShouldClose(window, true);
+  }
 }
 
 void Application::run() {
