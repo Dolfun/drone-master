@@ -1,16 +1,26 @@
 #pragma once
 #include "ApplicationInfo.h"
-#include "UI/WindowManager.h"
-#include "UI/UserInterface.h"
-#include "websocket/Client.h"
+#include "Websocket/Client.h"
+
+struct GLFWwindow;
 
 class Application {
 public:
   Application(const ApplicationInfo&);
+  ~Application();
+
+  Application(const Application&) = delete;
+  Application& operator=(const Application&) = delete;
+  Application(Application&&) = default;
+  Application& operator=(Application&&) = default;
 
   void run();
 
 private:
-  WindowManager window_manager;
-  UserInteface user_interface;
+  void init_glfw();
+  void init_imgui();
+  void render_ui();
+
+  ApplicationInfo info;
+  GLFWwindow* window;
 };
