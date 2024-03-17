@@ -5,7 +5,7 @@ struct ApplicationInfo {
   int window_x, window_y;
   bool fullscreen;
   std::string font_name;
-  short port_no;
+  std::string websocket_uri;
 
   static ApplicationInfo parse_from_file(std::string path);
 };

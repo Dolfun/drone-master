@@ -40,7 +40,7 @@ ApplicationInfo ApplicationInfo::parse_from_file(std::string path) {
   info.window_y = std::stoi(info_file["window_y"]);
   info.fullscreen = (lower(info_file["fullscreen"]) == "true");
   info.font_name = info_file["font_name"];
-  info.port_no = std::stoi(info_file["port_no"]);
+  info.websocket_uri = info_file["websocket_uri"];
 
   return info;
 }
