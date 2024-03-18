@@ -1,0 +1,5 @@
+add_library(asio asio.cc)
+target_link_libraries(asio PUBLIC asio_headers)
+target_compile_features(asio PUBLIC cxx_std_20)
+target_compile_definitions(asio PRIVATE ASIO_SEPARATE_COMPILATION)
+target_include_directories(asio PUBLIC .)
